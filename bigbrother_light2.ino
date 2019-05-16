@@ -4,7 +4,7 @@
 #include <ESP8266HTTPClient.h>
 #include <ArduinoJson.h>
 #include <ESP8266mDNS.h>
-#include <bigbrother_common.h>
+#include "bigbrother_common.h"
 #include <Timer.h>
 
 const char* CONTROLLER_UUID = "2XadeeI7rJ3QsbeOHAiJ";
@@ -101,10 +101,11 @@ void set_brightness() {
   Serial.println(message);
   int brightness = message.toInt();
   analogWrite(redPin, brightness);
-//  analogWrite(greenPin, brightness);
+  analogWrite(greenPin, brightness);
 //  analogWrite(bluePin, brightness);
   CURRENT_BRIGHTNESS = brightness;
   change_status(STATUS_READY);
+  send_data(0);
   respond_ok("text/plain", "set complete");
 }
 
