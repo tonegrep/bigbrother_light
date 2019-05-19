@@ -15,6 +15,10 @@
 #define ERROR_CLIENT_UNAVAILABLE 204
 #define ERROR_BUSY               205
 
+#define CONTROLLER_TYPE_LIGHT    0
+#define CONTROLLER_TYPE_SENSOR   1
+#define CONTROLLER_TYPE_RC       2
+
 typedef struct {
     String UUID;
     int    status_code;
